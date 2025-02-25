@@ -61,7 +61,13 @@ won the most winter medals, along with the number of medals aliased to 'count'.
 */
 
 const mostWinterWins = country => {
-  return;
+  return `SELECT year, COUNT(*) AS count 
+          FROM GoldMedal 
+          WHERE country = '${country}' 
+          AND season = 'Winter' 
+          GROUP BY year 
+          ORDER BY count DESC
+          LIMIT 1;`;
 };
 
 /*
