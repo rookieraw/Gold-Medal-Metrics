@@ -76,7 +76,12 @@ won the most medals, along with the number of medals aliased to 'count'.
 */
 
 const bestYear = country => {
-  return;
+  return `SELECT year, COUNT(*) AS count
+          FROM GoldMedal 
+          WHERE country = '${country}'
+          GROUP BY year
+          ORDER BY count DESC
+          LIMIT 1;`;
 };
 
 /*
